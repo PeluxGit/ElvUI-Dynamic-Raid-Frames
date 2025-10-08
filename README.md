@@ -2,8 +2,6 @@
 
 EDRF is a lightweight **WeakAura** that dynamically switches between your ElvUI raid headers (party / raid1 / raid2 / raid3) based on group size and applies a few **safe, minimal** settings to keep layouts consistent.
 
-**Repo:** https://github.com/PeluxGit/ElvUI-Dynamic-Raid-Frames
-
 ---
 
 ## What it does
@@ -39,7 +37,7 @@ In addition, EDRF:
 ## Install
 
 1. **In game:** `/wa` → **Import** → paste the EDRF export string from this repo (see `weakAura/EDRF_ImportString.txt`).
-2. Make sure your ElvUI profile has **party**, **raid1**, **raid2**, and **raid3** headers configured (names like `ElvUF_Party`, `ElvUF_Raid1`, etc.).
+2. Make sure your ElvUI profile has **party**, **raid1**, **raid2**, and **raid3** group UnitFrames configured.
 3. Arrange each header’s size/position/appearance in ElvUI. EDRF will just pick which one shows.
 
 ---
@@ -52,13 +50,11 @@ The aura runs automatically on:
 - group/raid roster changes
 - leaving combat (to apply any queued updates)
 
-There is no chat command; no manual action is required during play.
-
 ---
 
 ## Configuration (inside the aura)
 
-Open the aura → **Actions → On Init**. At the top you’ll find:
+Open the aura → **Actions → Custom Init**. At the top you’ll find:
 
 ```lua
 aura_env.EDRF = {
@@ -106,13 +102,6 @@ If you prefer to build the aura manually (or you don’t have an import string h
 5. **Actions** tab → **Custom Init**:
    - Paste the contents of `weakAura/EDRF_OnInit.lua` from this repo.
 6. **Done**. The aura will react automatically as you join/leave groups, zone, or exit combat.
-
----
-
-## Troubleshooting
-
-- **Header doesn’t switch:** Ensure your ElvUI profile defines the headers listed in `HEADERS` and that they’re enabled.
-- **Layout looks different than expected:** That’s ElvUI’s own settings (size, growth direction, groups per row/column, etc.). EDRF only selects the header and enforces the four minimal knobs listed above.
 
 ---
 
